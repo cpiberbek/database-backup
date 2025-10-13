@@ -19,8 +19,13 @@ find "$BACKUP_DIR" -type f -mtime +$BACKUP_RETENTION_DAYS -delete
 
 # Upload ke Google Drive
 echo "Mengunggah ke Google Drive..."
-rclone copy "$BACKUP_DIR" "$RCLONE_REMOTE:$RCLONE_TARGET" \
+if rclone copy "$BACKUP_DIR" "$RCLONE_REMOTE:$RCLONE_TARGET" \
     --progress \
     --log-file "$RCLONE_LOG_FILE" \
-    --log-level INFO
-echo "$(date) - Upload selesai." >> "$MYSQL_LOG_FILE"
+    --log-level INFO; then
+    echo "$(date) - ✅ Upload ke Google Drive selesai." >> "$MYSQL_LOG_FILE"
+else
+    echo "$(date) - ❌ Gagal mengunggah ke Google Drive!" >> "$MYSQL_LOG_FILE"
+    echo "Peringatan: Upload ke Google Drive gagal. Cek log di $RCLONE_LOG_FILE"
+    exit 1
+fi
