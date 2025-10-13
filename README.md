@@ -32,15 +32,15 @@ Dirancang agar bisa dipasang di banyak server dengan konfigurasi yang seragam me
 ### 1️⃣ Clone Repository
 Jalankan perintah berikut di server:
 ```bash
-git clone https://github.com/<username>/<repo-name>.git /opt/backup
 cd /opt/backup
+git clone https://github.com/<username>/<repo-name>.git /opt/backup
 ### 2️⃣ Buat File .env
-### 3️⃣ Pasang Rclone (jika belum)
+### 3️⃣ Jalankan Setup Otomatis
+chmod +x /opt/backup/database-backup/script/setup.sh
+ ./setup.sh
+### 4️⃣ Pasang Rclone (jika belum)
 sudo apt install rclone -y
 copy file rclone.conf.example ke /root/.config/rclone/
-### 4️⃣ Jalankan Setup Otomatis
-chmod +x /opt/backup/database-backup/setup.sh
- ./setup.sh
 
 ## 🧪 Testing Manual
 ### Jalankan Backup Secara Manual
