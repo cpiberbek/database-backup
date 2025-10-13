@@ -42,7 +42,17 @@ chmod +x /opt/backup/database-backup/script/setup.sh
 sudo apt install rclone -y
 mkdir /root/.config/rclone
 cp rclone.conf.example /root/.config/rclone/rclone.conf
-
+rclone config reconnect <nama-konfigurasi>:
+Ini akan membuka proses reautorisasi:
+1. Download Rclone untuk Windows dari:
+👉 https://rclone.org/downloads/
+2. Extract (misal di D:\rclone-v1.xx.x-windows-amd64).
+3. Buka PowerShell di folder tersebut, lalu jalankan:
+4. Rclone akan menampilkan perintah rclone authorize "drive" "...".
+5. Jalankan itu di komputer Windows yang punya browser.
+6. Login ulang ke akun Google kamu.
+7. Setelah berhasil, copy token ke rclone.conf 
+    
 ## 🧪 Testing Manual
 ### Jalankan Backup Secara Manual
 cd /opt/backup/database-backup/script/

@@ -1,5 +1,7 @@
-[gdrive_berbek]
-type = drive
-scope = drive
+[gdrive_berbek] #ganti jadi nama konfigurasi drive
+type = drive #default jika menggunakan google drive
+scope = drive #default jika menggunakan google drive
+
+#ganti menjadi token anda
 token = {"access_token":"YOUR_ACCESS_TOKEN","token_type":"Bearer","refresh_token":"YOUR_REFRESH_TOKEN","expiry":"2025-10-10T14:16:59.987788263+07:00"}
 team_drive =
