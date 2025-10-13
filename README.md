@@ -39,7 +39,8 @@ cd /opt/backup
 sudo apt install rclone -y
 copy file rclone.conf.example ke /root/.config/rclone/
 ### 4️⃣ Jalankan Setup Otomatis
-bash /opt/backup/setup.sh
+chmod +x /opt/backup/database-backup/setup.sh
+ ./setup.sh
 
 ## 🧪 Testing Manual
 ### Jalankan Backup Secara Manual

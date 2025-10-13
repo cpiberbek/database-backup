@@ -2,10 +2,7 @@
 # Setup script otomatis
 
 echo "Menyiapkan direktori backup dan link..."
-chmod +x /opt/backup/database_backup.sh
-
-# Symlink supaya bisa dijalankan dengan mysql_backup.sh
-ln -sf /opt/backup/database_backup.sh /usr/local/bin/mysql_backup.sh
+chmod +x /opt/backup/database-backup.sh
 
 # Pastikan log folder
 mkdir -p /var/log /var/backups/mysql
