@@ -40,11 +40,13 @@ chmod +x /opt/backup/database-backup/script/setup.sh
  ./setup.sh
 ### 4️⃣ Pasang Rclone (jika belum)
 sudo apt install rclone -y
-copy file rclone.conf.example ke /root/.config/rclone/
+mkdir /root/.config/rclone
+cp rclone.conf.example /root/.config/rclone/rclone.conf
 
 ## 🧪 Testing Manual
 ### Jalankan Backup Secara Manual
-mysql_backup.sh
+cd /opt/backup/database-backup/script/
+./database-backup.sh
 ### Cek Hasil Backup
 ls -lh /var/backups/mysql/
 

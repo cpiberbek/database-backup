@@ -1,6 +1,6 @@
 #!/bin/bash
 set -a
-source /opt/backup/.env
+source /opt/backup/database-backup/script/.env
 set +a
 
 mkdir -p "$BACKUP_DIR"
