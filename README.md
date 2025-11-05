@@ -44,8 +44,19 @@ git clone https://github.com/<username>/<repo-name>.git /opt/backup
 ```
 
 ### 2️⃣ Buat File `.env`
+Salin dari `.env.example` 
+```
+cp .env.example /opt/backup/database-backup/script/.env
+sudo nano .env
+```
+lalu edit sesuai environment Anda.
 
-(Salin dari `.env.example` lalu edit sesuai environment Anda.)
+#### Verifikasi file .env dan database-backup.sh
+Jalankan
+```
+./database-backup.sh
+```
+Jika tidak ada eror, berarti backup lokal berhasil. Lanjut ke script otomatis backup dan konfigurasi Google Drive 
 
 ### 3️⃣ Jalankan Setup Otomatis
 
@@ -60,21 +71,37 @@ cd /opt/backup/database-backup/script/
 ```bash
 sudo apt install rclone -y
 mkdir -p /root/.config/rclone
+cd /opt/backup/database-backup/script/
 cp rclone.conf.example /root/.config/rclone/rclone.conf
 ```
+
+### 4️⃣ Konfigurasi Rclone
+```bash
+cd /root/.config/rclone
+rclone config reconnect <nama-konfigurasi>:
+```
+Already have a token - refresh?
+```
+y
+```
+Use auto config?
+```
+n
+```
+akan muncul token konfigurasi ke drive
+```
+rclone authorize "drive" "..........."
+```
+jangan tutup terminal ini
 
 > membuat token rclone via windows suport browser:
 >
 > 1. Download Rclone untuk Windows dari: [https://rclone.org/downloads/](https://rclone.org/downloads/)
 > 2. Extract (misal di `D:\rclone-v1.xx.x-windows-amd64`).
-> 3. Buka PowerShell di folder tersebut, lalu jalankan perintah yang ditampilkan (`rclone authorize "drive" "..."`).
-> 4. Jalankan itu di komputer Windows yang punya browser.
-> 5. Login ulang ke akun Google kamu.
-> 6. Setelah berhasil, copy token ke `rclone.conf`.
-
-```bash
-rclone config reconnect <nama-konfigurasi>:
-```
+> 3. Buka PowerShell/Terminal di folder tersebut, dengan menambahkan `.\` lalu jalankan perintah yang ditampilkan (`rclone authorize "drive" "..."`). Contoh = `.\rclone authorize "drive" "xxxxxxxxxxxxx"`
+> 4. Login ulang ke akun Google.
+> 5. Setelah berhasil, copy token ke `rclone.conf`
+> 6. Paste pada bagian `config_token>` di terminal linux.
 ---
 
 ## 🧪 Testing Manual
