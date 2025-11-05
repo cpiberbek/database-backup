@@ -75,30 +75,32 @@ cd /opt/backup/database-backup/script/
 cp rclone.conf.example /root/.config/rclone/rclone.conf
 ```
 
-### 4️⃣ Konfigurasi Rclone
+### 5️⃣ Konfigurasi Rclone
 ```bash
 cd /root/.config/rclone
 rclone config reconnect <nama-konfigurasi>:
-```
+
 Already have a token - refresh?
-```
 y
-```
+
 Use auto config?
-```
 n
 ```
-akan muncul token konfigurasi ke drive
+Setelah itu akan muncul perintah seperti ini di terminal:
 ```
 rclone authorize "drive" "..........."
 ```
-jangan tutup terminal ini
+⚠️ Jangan tutup terminal Linux ini!
+Karena perlu menyalin hasil token dari langkah berikut di Windows.
 
 > membuat token rclone via windows suport browser:
 >
 > 1. Download Rclone untuk Windows dari: [https://rclone.org/downloads/](https://rclone.org/downloads/)
 > 2. Extract (misal di `D:\rclone-v1.xx.x-windows-amd64`).
-> 3. Buka PowerShell/Terminal di folder tersebut, dengan menambahkan `.\` lalu jalankan perintah yang ditampilkan (`rclone authorize "drive" "..."`). Contoh = `.\rclone authorize "drive" "xxxxxxxxxxxxx"`
+> 3. Buka PowerShell / Terminal di folder tersebut lalu jalankan perintah yang muncul di terminal Linux,dengan menambahkan awalan `.\`:
+  ```
+  .\rclone authorize "drive" "xxxxxxxxxxxxx"
+  ```
 > 4. Login ulang ke akun Google.
 > 5. Setelah berhasil, copy token ke `rclone.conf`
 > 6. Paste pada bagian `config_token>` di terminal linux.
