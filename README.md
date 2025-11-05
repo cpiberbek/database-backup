@@ -51,6 +51,7 @@ git clone https://github.com/<username>/<repo-name>.git /opt/backup
 
 ```bash
 chmod +x /opt/backup/database-backup/script/setup.sh
+cd /opt/backup/database-backup/script/
 ./setup.sh
 ```
 
