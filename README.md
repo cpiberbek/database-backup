@@ -130,18 +130,12 @@ Setelah proses selesai, cek di Google Drive (`My Drive → server-backup → mys
 
 ---
 
-### Cara update
-1. Hapus cron lama:
+## Update Versi
+1. Hapus isi dari cron lama:
 
 ```bash
 crontab -e
 ```
-hapus isinya
 
 2. Update folder dari GitHub
-3. Jalankan setup versi baru
-```bash
-cd /opt/backup/database-backup/script
-chmod +x setup.sh
-./setup.sh
-```
+3. Jalankan setup versi baru, kembali dan lanjut dari bagian ⚙️ Persiapan Awal
