@@ -10,19 +10,20 @@ Dirancang agar bisa dipasang di banyak server dengan konfigurasi yang seragam me
 
 * Backup beberapa database MySQL otomatis (multi-database)
 * Kompres hasil backup ke `.sql.gz`
-* Menghapus backup lama (> 60 hari)
+* Menghapus backup lama (> 7 hari)
 * Upload otomatis ke Google Drive via `rclone`
+* `rclone sync` isi folder Google Drive akan sama persis dengan folder backup server.
 * Logging terpisah untuk MySQL & rclone
 * Konfigurasi menggunakan `.env`
-* Cronjob otomatis tiap minggu (default: Minggu 02:00)
+* Cronjob otomatis tiap hari (default: pukul 02:00)
 
 ---
 
 ## 📂 Struktur Folder (clone pada folder berikut)
 
 ```
-/opt/backup/database_backup
-├── database_backup.sh      # Skrip utama backup
+/opt/backup/database-backup
+├── database-backup.sh      # Skrip utama backup
 ├── .env                    # File konfigurasi server (tidak diupload ke Git)
 ├── .env.example            # Template .env untuk server baru
 ├── rclone.conf             # Konfigurasi Google Drive (manual)
@@ -128,3 +129,19 @@ ls -lh /var/backups/mysql/
 Setelah proses selesai, cek di Google Drive (`My Drive → server-backup → mysql`) untuk memastikan file terunggah.
 
 ---
+
+### Cara update
+1. Hapus cron lama:
+
+```bash
+crontab -e
+```
+hapus isinya
+
+2. Update folder dari GitHub
+3. Jalankan setup versi baru
+```bash
+cd /opt/backup/database-backup/script
+chmod +x setup.sh
+./setup.sh
+```

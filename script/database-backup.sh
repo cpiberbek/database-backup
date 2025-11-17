@@ -17,9 +17,9 @@ done
 # Hapus file lama
 find "$BACKUP_DIR" -type f -mtime +$BACKUP_RETENTION_DAYS -delete
 
-# Upload ke Google Drive
+# Upload ke Google Drive dengan sync (isi folder Google Drive akan sama persis dengan folder backup server.)
 echo "Mengunggah ke Google Drive..."
-if rclone copy "$BACKUP_DIR" "$RCLONE_REMOTE:$RCLONE_TARGET" \
+if rclone sync "$BACKUP_DIR" "$RCLONE_REMOTE:$RCLONE_TARGET" \
     --progress \
     --log-file "$RCLONE_LOG_FILE" \
     --log-level INFO; then
