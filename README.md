@@ -130,7 +130,7 @@ Setelah proses selesai, cek di Google Drive (`My Drive → server-backup → mys
 
 ---
 
-## Update Versi
+## 🛠️ Update Versi
 1. Hapus isi dari cron lama:
 
 ```bash
