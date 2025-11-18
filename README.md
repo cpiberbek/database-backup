@@ -52,14 +52,20 @@ sudo nano .env
 ```
 lalu edit sesuai environment Anda.
 
-#### Verifikasi file .env dan database-backup.sh
+### 3️⃣ Verifikasi file .env dan database-backup.sh
 Jalankan
 ```
+chmod +x database-backup.sh
 ./database-backup.sh
 ```
-Jika tidak ada eror, berarti backup lokal berhasil. Lanjut ke script otomatis backup dan konfigurasi Google Drive 
+Verifikasi Hasil Backup
+```bash
+ls -lh /var/backups/mysql/
+gunzip -c /var/backups/mysql/<nama-file> | head -n 50
+```
+❗ Jika tidak ada CREATE TABLE atau INSERT INTO, berarti isi database kosong. Biasanya terkendala user n pass mysql di env. Jika tidak ada eror, berarti backup lokal berhasil. Lanjut ke script otomatis backup dan konfigurasi Google Drive 
 
-### 3️⃣ Jalankan Setup Otomatis
+### 4️⃣ Jalankan Setup Otomatis
 
 ```bash
 chmod +x /opt/backup/database-backup/script/setup.sh
@@ -67,7 +73,7 @@ cd /opt/backup/database-backup/script/
 ./setup.sh
 ```
 
-### 4️⃣ Pasang Rclone (jika belum)
+### 5️⃣ Pasang Rclone (jika belum)
 
 ```bash
 sudo apt install rclone -y
@@ -76,10 +82,10 @@ cd /opt/backup/database-backup/script/
 cp rclone.conf.example /root/.config/rclone/rclone.conf
 ```
 
-### 5️⃣ Konfigurasi Rclone
+### 6️⃣ Konfigurasi Rclone
 ```bash
 cd /root/.config/rclone
-rclone config reconnect <nama-konfigurasi>:
+rclone config reconnect <RCLONE_REMOTE>:
 
 Already have a token - refresh?
 y
@@ -107,25 +113,12 @@ Karena perlu menyalin hasil token dari langkah berikut di Windows.
 > 6. Paste pada bagian `config_token>` di terminal linux.
 ---
 
-## 🧪 Testing Manual
-
-### Jalankan Backup Secara Manual
-
+### 7️⃣ Verifikasi Upload Google Drive
+Jalankan
 ```bash
 cd /opt/backup/database-backup/script/
 ./database-backup.sh
 ```
-
-### Cek Hasil Backup
-
-```bash
-ls -lh /var/backups/mysql/
-```
-
----
-
-## ☁️ Verifikasi Upload Google Drive
-
 Setelah proses selesai, cek di Google Drive (`My Drive → server-backup → mysql`) untuk memastikan file terunggah.
 
 ---
