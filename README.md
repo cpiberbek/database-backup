@@ -41,7 +41,7 @@ Jalankan perintah berikut di server:
 
 ```bash
 cd /opt/backup
-git clone https://github.com/<username>/<repo-name>.git /opt/backup
+clone repositori disini
 ```
 
 ### 2️⃣ Buat File `.env`
